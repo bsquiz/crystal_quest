@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crystal Quest</title>
+    <link rel="stylesheet" type="text/css" href="../shared.css">
+</head>
+<body>
+<div>
+    <div id="mainNavTarget"></div>
+    <div id="menu" class="text-lg">
+        <h1 class="text-underline">Crystal Quest</h1>
+        <h2>how to play</h2>
+        <ul class="ml-3">
+            <li>
+                <p>Collect all crystal to open a portal to the next level.</p>
+                <div class="d-flex">
+                    <div>
+                        <div id="crystal"></div>
+                        <div class="text-sm">crystal</div>
+                    </div>
+                    <div class="ml-3">
+                        <div id="goalPortal"></div>
+                        <div class="text-sm">goal</div>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <p>Destroy enemies for points. Watch out, enemies spawn out of portals.</p>
+                <div class="d-flex">
+                    <div>
+                        <div id="enemyPortal"></div>
+                        <span class="text-sm text-center">portal</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <p>Collect large crystals for bonus points. Bonus crystals also spawn out of portals.</p>
+                <div class="d-flex">
+                    <div>
+                        <div id="bonusCrystal"></div>
+                        <span class="text-sm text-center">bonus crystal</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <h2>controls</h2>
+        <ul class="ml-3">
+            <li><b>mouse:</b> move</li>
+            <li><b>click:</b> shoot</li>
+            <li><b>spacebar:</b> bomb</li>
+        </ul>
+        <button class="mb-3" onclick="startGame()">start</button>
+    </div>
+    <div id="game" class="d-none">
+        <canvas id="hud"></canvas>
+        <canvas id="canvas"></canvas>
+    </div>
+</div>
+
+
+<div id="debug" class="d-none">
+    <div>spawn enemy time: <span id="spawnEnemyTime"></span></div>
+    <div>keys to get: <span id="keysToGet"></span></div>
+
+</div>
+<script src="js/utils.js"></script>
+<script src="js/graphics.js"></script>
+<script src="js/CrystalQuest.js"></script>
+<script src="js/factory.js"></script>
+<script>
+    graphics.init();
+
+    function startGame() {
+        document.querySelector('#menu').classList.add('d-none');
+        document.querySelector('#game').classList.remove('d-none');
+
+        CrystalQuest.init();
+        CrystalQuest.update();
+    }
+</script>
+<script type="text/javascript" src="../nav.js"></script>
+</body>
+
+<style>
+    body {
+        background: #131313;
+        color: white;
+        font-family: "Gill Sans", sans-serif;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    #hud, #canvas {
+        display: block;
+    }
+    #canvas {
+        border: solid thick #d0d0d0;
+    }
+
+    #menu button {
+        font-size: 2em;
+        padding: 10px 40px;
+        border: solid 2px white;
+        background: none;
+        color: white;
+        cursor: pointer;
+    }
+
+    #menu button:hover {
+        background: white;
+        color: black;
+    }
+
+    .text-sm {
+        font-size: 0.8em;
+    }
+
+    .text-lg {
+        font-size: 1.2em;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-underline {
+        text-decoration: underline;
+    }
+
+    .center-items {
+        align-items: center;
+        justify-content: center;
+    }
+    .ml-3 {
+        margin-left: 16px;
+    }
+    .p-3 {
+        padding: 16px;
+    }
+    .mb-3 {
+        margin-bottom: 16px;
+    }
+    .d-flex {
+        display: flex;
+    }
+    .d-none {
+        display: none;
+    }
+</style>
+</html>
